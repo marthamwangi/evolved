@@ -6,7 +6,7 @@ const portfolioItems =
   {
     "title": "Shopify Website Enhancement",
     "description": "Successfully updated a client's Shopify ambassador page for flawless desktop and mobile formatting. The project included implementing an easily editable page widget to streamline internal team workflows.",
-    "image": "/portfolio/shopify-developer.png",
+    "image": "/shopify-developer.png",
     "aiHint": "shopify website",
     "keywords": ["Shopify", "web design", "e-commerce", "ambassador page", "responsive design"],
     "skills": ["HTML", "CSS", "Shopify Liquid", "UI/UX"],
@@ -16,7 +16,7 @@ const portfolioItems =
   {
     "title": "Micro-Frontend Application",
     "description": "Developed an Angular 15 application with a micro-frontend architecture (NX) and localization for four languages. Implemented and redesigned pages from existing Figma designs using Bootstrap and Material UI.",
-    "image": "/portfolio/angular-microfrontend.png",
+    "image": "/microfrontend.png",
     "aiHint": "angular application, micro-frontend",
     "keywords": ["Angular", "micro-frontend", "localization", "Figma", "web development"],
     "skills": ["Angular", "TypeScript", "JavaScript", "HTML", "CSS"],
@@ -26,7 +26,7 @@ const portfolioItems =
   {
     "title": "Blockchain Crowdsourcing Wallet",
     "description": "Designed a crowdsourcing wallet leveraging the Celo and Circle blockchains. The project focused on integrating Circle’s fiat-to-crypto infrastructure with Celo’s mobile-first smart contract environment.",
-    "image": "/portfolio/blockchain.png",
+    "image": "/blockchain.png",
     "aiHint": "blockchain wallet, smart contracts",
     "keywords": ["Blockchain", "Web3", "cryptocurrency", "crowdsourcing", "smart contracts"],
     "skills": ["Node.js", "JavaScript", "HTML", "CSS", "Technical Writing"],
@@ -36,7 +36,7 @@ const portfolioItems =
   {
     "title": "E-commerce Website Development",
     "description": "Engineered a custom e-commerce platform using HTML, CSS, JavaScript, and PHP. The project involved comprehensive testing, debugging, and integrating key e-commerce marketing functionalities.",
-    "image": "/portfolio/wordpress-developer.png",
+    "image": "/wordpress-developer.png",
     "aiHint": "e-commerce website, php",
     "keywords": ["e-commerce", "PHP", "custom website", "online sales", "SEO"],
     "skills": ["PHP", "JavaScript", "HTML", "CSS", "Ecommerce Marketing"],
@@ -46,7 +46,7 @@ const portfolioItems =
   {
     "title": "Responsive Angular App",
     "description": "Built a responsive, three-page Angular application. The project prioritized a clean user interface and optimized performance across all devices.",
-    "image": "/portfolio/angular-15-developer.png",
+    "image": "/angular-15-developer.png",
     "aiHint": "responsive web app, angular",
     "keywords": ["responsive design", "Angular", "web app", "UI/UX", "performance optimization"],
     "skills": ["Angular", "TypeScript", "CSS", "HTML"],
@@ -56,7 +56,7 @@ const portfolioItems =
   {
     "title": "AI-Powered EdTech Platform",
     "description": "Developed AI-driven solutions to enhance content creation at OnlineCourseHost.com. Projects included streamlining course outlines and automating content to improve learner engagement and scale course materials.",
-    "image": "/portfolio/edtech-developer.png",
+    "image": "/edtech-developer.png",
     "aiHint": "ai in education, online learning platform",
     "keywords": ["AI", "EdTech", "online learning", "course creation", "content strategy"],
     "skills": ["Angular", "Node.js", "AI/ML", "JavaScript"],

@@ -9,6 +9,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import { sendContactForm } from '@/app/actions';
 import { CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 
 const formSchema = z.object({
@@ -31,13 +32,21 @@ export default function ContactForm() {
     },
   });
 
-  function onSubmit(values: FormData) {
-    console.log(values);
-    toast({
-      title: 'Message Sent!',
-      description: "Thanks for reaching out. We'll get back to you soon.",
-    });
-    form.reset();
+  async function onSubmit(values: FormData) {
+    try {
+      await sendContactForm(values);
+      toast({
+        title: 'Message Sent!',
+        description: "Thanks for reaching out. We'll get back to you soon.",
+      });
+      form.reset();
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast({
+        title: 'Error',
+        description: 'There was an error sending your message. Please try again.',
+      });
+    }
   }
 
   return (
