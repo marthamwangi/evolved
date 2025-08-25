@@ -26,12 +26,13 @@ export default function Hero() {
             </div>
           </div>
           <Image
-            src="https://placehold.co/600x600.png"
+            src="/assets/evolved-tech-hero.jpg"
             width="600"
             height="600"
             alt="Hero"
             className="mx-auto aspect-square overflow-hidden rounded-xl object-cover sm:w-full lg:order-last"
             data-ai-hint="abstract technology"
+            loading='lazy'
           />
         </div>
       </div>
