@@ -2,27 +2,20 @@ import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Card, CardContent } from '@/components/ui/card';
 
 const teamMembers = [
-  {
-    name: 'Alex Rivera',
-    role: 'Lead Engineer & Founder',
-    bio: 'A specialist in high-performance Angular applications and clean architecture. Alex provides the technical vision for all projects.',
-    avatar: 'https://placehold.co/100x100.png',
-    fallback: 'AR',
-  },
-  {
-    name: 'Samantha Chen',
-    role: 'Digital Operations Manager',
-    bio: 'Samantha orchestrates social media strategies and virtual assistant services with an engineer’s precision and efficiency.',
-    avatar: 'https://placehold.co/100x100.png',
-    fallback: 'SC',
-  },
-  {
-    name: 'David Lee',
-    role: 'Frontend Developer & UI/UX Expert',
-    bio: 'David focuses on creating intuitive, responsive designs and optimizing web performance for an exceptional user experience.',
-    avatar: 'https://placehold.co/100x100.png',
-    fallback: 'DL',
-  },
+    {
+      "name": "Simon Macharia",
+      "role": "Founder & CEO",
+      "bio": "As a seasoned expert in high-performance systems, Simon sets the technical vision for our projects, ensuring every solution is built for speed, scalability, and long-term success.",
+      "avatar": "/evolved-agency-CEO.png",
+      "fallback": "SM"
+    },
+    {
+      "name": "Martha Macharia",
+      "role": "Co-founder & CTO",
+      "bio": "Martha is the force behind our agency's technology stack. She specializes in creating efficient, automated workflows that provide a competitive advantage for our clients.",
+      "avatar": "/evolved-agency-CTO.png",
+      "fallback": "MM"
+    }
 ];
 
 export default function Team() {
@@ -38,8 +31,8 @@ export default function Team() {
             </p>
           </div>
         </div>
-        <div className="mx-auto grid max-w-5xl items-center gap-8 py-12 sm:grid-cols-2 md:grid-cols-3">
-          {teamMembers.map((member) => (
+        <div className="mx-auto grid max-w-5xl items-center gap-8 py-12 grid-cols-2">
+        {teamMembers.map((member) => (
             <Card key={member.name} className="text-center h-full flex flex-col">
               <CardContent className="flex flex-col items-center justify-center p-6 flex-grow">
                 <Avatar className="h-24 w-24 mb-4">
