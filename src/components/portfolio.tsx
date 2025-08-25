@@ -1,44 +1,69 @@
 import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
 
-const portfolioItems = [
+const portfolioItems = 
+[
   {
-    title: 'Scalable E-Commerce Platform',
-    description: 'An Angular-based storefront with NGRX state management for a seamless shopping experience.',
-    image: 'https://placehold.co/600x400.png',
-    aiHint: 'ecommerce website',
-  },
-  {
-    title: 'Real-Time Analytics Dashboard',
-    description: 'A high-performance dashboard for visualizing complex data streams with optimized rendering.',
-    image: 'https://placehold.co/600x400.png',
-    aiHint: 'data dashboard',
-  },
-  {
-    title: 'Corporate Website Redesign',
-    description: 'A fully responsive and performance-optimized website for a leading tech company.',
-    image: 'https://placehold.co/600x400.png',
-    aiHint: 'corporate website',
+    "title": "Shopify Website Enhancement",
+    "description": "Successfully updated a client's Shopify ambassador page for flawless desktop and mobile formatting. The project included implementing an easily editable page widget to streamline internal team workflows.",
+    "image": "/portfolio/shopify-developer.png",
+    "aiHint": "shopify website",
+    "keywords": ["Shopify", "web design", "e-commerce", "ambassador page", "responsive design"],
+    "skills": ["HTML", "CSS", "Shopify Liquid", "UI/UX"],
+    "technologies": ["Shopify", "Pipeline Theme"],
+    "client": "E-commerce Business"
   },
   {
-    title: 'SaaS Application UI',
-    description: 'Integrated a complex API to a user-friendly interface for a B2B software product.',
-    image: 'https://placehold.co/600x400.png',
-    aiHint: 'saas interface',
-  },
-    {
-    title: 'Mobile-First Progressive Web App',
-    description: 'Built a PWA ensuring flawless functionality and user experience on any device.',
-    image: 'https://placehold.co/600x400.png',
-    aiHint: 'mobile app',
+    "title": "Micro-Frontend Application",
+    "description": "Developed an Angular 15 application with a micro-frontend architecture (NX) and localization for four languages. Implemented and redesigned pages from existing Figma designs using Bootstrap and Material UI.",
+    "image": "/portfolio/angular-microfrontend.png",
+    "aiHint": "angular application, micro-frontend",
+    "keywords": ["Angular", "micro-frontend", "localization", "Figma", "web development"],
+    "skills": ["Angular", "TypeScript", "JavaScript", "HTML", "CSS"],
+    "technologies": ["NX", "Bootstrap", "Material UI"],
+    "client": "Software Company"
   },
   {
-    title: 'Internal Admin Panel',
-    description: 'Developed a secure and efficient admin panel with clean architecture for long-term maintainability.',
-    image: 'https://placehold.co/600x400.png',
-    aiHint: 'admin panel',
+    "title": "Blockchain Crowdsourcing Wallet",
+    "description": "Designed a crowdsourcing wallet leveraging the Celo and Circle blockchains. The project focused on integrating Circle’s fiat-to-crypto infrastructure with Celo’s mobile-first smart contract environment.",
+    "image": "/portfolio/blockchain.png",
+    "aiHint": "blockchain wallet, smart contracts",
+    "keywords": ["Blockchain", "Web3", "cryptocurrency", "crowdsourcing", "smart contracts"],
+    "skills": ["Node.js", "JavaScript", "HTML", "CSS", "Technical Writing"],
+    "technologies": ["Celo", "Circle", "MongoDB", "Node.js"],
+    "client": "FinTech Startup"
   },
-];
+  {
+    "title": "E-commerce Website Development",
+    "description": "Engineered a custom e-commerce platform using HTML, CSS, JavaScript, and PHP. The project involved comprehensive testing, debugging, and integrating key e-commerce marketing functionalities.",
+    "image": "/portfolio/wordpress-developer.png",
+    "aiHint": "e-commerce website, php",
+    "keywords": ["e-commerce", "PHP", "custom website", "online sales", "SEO"],
+    "skills": ["PHP", "JavaScript", "HTML", "CSS", "Ecommerce Marketing"],
+    "technologies": ["PHP", "MySQL", "Apache"],
+    "client": "Small Business"
+  },
+  {
+    "title": "Responsive Angular App",
+    "description": "Built a responsive, three-page Angular application. The project prioritized a clean user interface and optimized performance across all devices.",
+    "image": "/portfolio/angular-15-developer.png",
+    "aiHint": "responsive web app, angular",
+    "keywords": ["responsive design", "Angular", "web app", "UI/UX", "performance optimization"],
+    "skills": ["Angular", "TypeScript", "CSS", "HTML"],
+    "technologies": ["Angular", "Webpack"],
+    "client": "B2B Service Provider"
+  },
+  {
+    "title": "AI-Powered EdTech Platform",
+    "description": "Developed AI-driven solutions to enhance content creation at OnlineCourseHost.com. Projects included streamlining course outlines and automating content to improve learner engagement and scale course materials.",
+    "image": "/portfolio/edtech-developer.png",
+    "aiHint": "ai in education, online learning platform",
+    "keywords": ["AI", "EdTech", "online learning", "course creation", "content strategy"],
+    "skills": ["Angular", "Node.js", "AI/ML", "JavaScript"],
+    "technologies": ["Angular", "Node.js", "various AI libraries"],
+    "client": "Educational Platform"
+  }
+]
 
 export default function Portfolio() {
   return (
