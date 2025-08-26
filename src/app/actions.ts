@@ -7,6 +7,7 @@ import {
 } from '@/ai/flows/generate-project-proposal';
 import nodemailer from 'nodemailer';
 import { z } from 'zod';
+import { marked } from 'marked'; 
 
 const contactFormSchema = z.object({
   name: z.string(),
@@ -18,7 +19,10 @@ export async function generateProjectProposalAction(input: GenerateProjectPropos
   return await generateProjectProposal(input);
 }
 
-export async function sendProjectProposalAction(proposal: string, userInput: {userName: string, userEmail: string}) {
+export async function sendProjectProposalAction(
+  proposal: string, 
+  userInput: { userName: string, userEmail: string }
+) {
   if (!process.env.GMAIL_USER || !process.env.GMAIL_PASS) {
     console.error('Gmail credentials not configured in .env file');
     return { success: false, message: 'Server email configuration is incomplete.' };
@@ -32,20 +36,36 @@ export async function sendProjectProposalAction(proposal: string, userInput: {us
     },
   });
 
+  const proposalHtml = marked.parse(proposal);
+
   const mailOptions = {
     from: process.env.GMAIL_USER,
-    to: process.env.GMAIL_USER,
-    subject: `Evolved Project Proposal for ${userInput.userName}...`,
-    text: `Here is the edited project proposal:\n\n--- from (${userInput.userEmail})`,
-    html: `<p>Here is the edited project proposal:</p><pre style="white-space: pre-wrap; font-family: sans-serif;">${proposal.substring(0, 50)}.</pre>`,
+    to: userInput.userEmail, // CHANGE: Send the proposal directly to the client
+    cc: process.env.GMAIL_USER, // Keep a copy for your records
+    subject: `Your Custom Project Proposal from Evolved Agency`,
+    html: `
+      <div style="font-family: sans-serif; line-height: 1.6; color: #333;">
+        <p>Hello ${userInput.userName},</p>
+        <p>Thank you for taking the time to share your project details. We have reviewed your information and are pleased to provide a custom proposal tailored to your needs.</p>
+        
+        <h2 style="color: #004d40;">Project Proposal</h2>
+        <div style="border-left: 4px solid #004d40; padding-left: 15px; background-color: #f9f9f9; padding: 20px;">
+          <pre style="white-space: pre-wrap; font-family: sans-serif;">${proposalHtml}</pre>
+        </div>
+
+        <p>We are confident that our expertise can help you achieve your goals. Please feel free to schedule a call with us to discuss this proposal in more detail.</p>
+        <p>Sincerely,</p>
+        <p>The Evolved Agency Team</p>
+      </div>
+    `,
   };
 
   try {
     await transporter.sendMail(mailOptions);
-    console.log('Edited proposal email sent successfully');
+    console.log('Project proposal email sent successfully');
     return { success: true, message: 'Proposal sent successfully!' };
   } catch (error) {
-    console.error('Error sending edited proposal email:', error);
+    console.error('Error sending project proposal email:', error);
     return { success: false, message: 'Failed to send proposal.' };
   }
 }

@@ -12,6 +12,12 @@ import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const GenerateProjectProposalInputSchema = z.object({
+  userName: z
+  .string()
+  .describe('The name of the client.'),
+  userEmail: z
+  .string()
+  .describe('The email address of the client.'),
   projectDescription: z
     .string()
     .describe('A detailed description of the project requirements.'),
@@ -49,6 +55,8 @@ const prompt = ai.definePrompt({
 
   Based on the following project details, create a comprehensive and persuasive project proposal.
 
+  Client Name: {{{userName}}}
+  Client Email: {{{userEmail}}}
   Project Description: {{{projectDescription}}}
   Desired Features: {{{desiredFeatures}}}
   Target Audience: {{{targetAudience}}}
