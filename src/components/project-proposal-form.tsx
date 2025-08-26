@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { generateProjectProposalAction } from '@/app/actions';
+import { generateProjectProposalAction, sendProjectProposalAction } from '@/app/actions';
 
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -15,8 +15,9 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, Di
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
-
 const formSchema = z.object({
+  userName: z.string().min(2, 'Please enter your name.'),
+  userEmail: z.string().email('Please enter a valid email.'),
   projectDescription: z.string().min(20, 'Please provide a more detailed project description.'),
   desiredFeatures: z.string().min(10, 'Please list at least one desired feature.'),
   targetAudience: z.string().min(5, 'Please describe your target audience.'),
@@ -28,13 +29,16 @@ type FormData = z.infer<typeof formSchema>;
 
 export default function ProjectProposalForm() {
   const [isLoading, setIsLoading] = useState(false);
-  const [proposal, setProposal] = useState<string | null>(null);
+  const [proposal, setProposal] = useState<string  | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isSending, setIsSending] = useState(false);
   const { toast } = useToast();
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      userName: '',
+      userEmail: '',
       projectDescription: '',
       desiredFeatures: '',
       targetAudience: '',
@@ -45,6 +49,7 @@ export default function ProjectProposalForm() {
 
   async function onSubmit(values: FormData) {
     setIsLoading(true);
+    // Do not reset the form here, we need the user's name and email for sending
     setProposal(null);
     try {
       const result = await generateProjectProposalAction(values);
@@ -69,6 +74,30 @@ export default function ProjectProposalForm() {
     }
   }
 
+  async function handleSendProposal() {
+    setIsSending(true);
+    const values = form.getValues(); // Get current form values including name and email
+    if (proposal && values.userName && values.userEmail) {
+      try {
+        const result = await sendProjectProposalAction(proposal, { userName: values.userName, userEmail: values.userEmail });
+        if (result.success) {
+          toast({
+            title: 'Proposal Sent!',
+            description: "Your edited proposal has been sent.",
+          });
+          setIsDialogOpen(false); // Close the dialog on success
+        }
+       toast({
+        variant: 'destructive',
+        title: 'Error',
+        description: 'An unexpected error occurred. Please try again.',
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  }
+}
+
   return (
     <>
       <Card>
@@ -79,6 +108,34 @@ export default function ProjectProposalForm() {
         <CardContent>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField
+                  control={form.control}
+                  name="userName"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Your Name</FormLabel>
+                      <FormControl>
+                        <Input placeholder="John Doe" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="userEmail"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Your Email</FormLabel>
+                      <FormControl>
+                        <Input placeholder="your.email@example.com" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
               <FormField
                 control={form.control}
                 name="projectDescription"
@@ -164,10 +221,10 @@ export default function ProjectProposalForm() {
           <ScrollArea className="h-96 w-full rounded-md border p-4">
             <div className="whitespace-pre-wrap text-sm">{proposal}</div>
           </ScrollArea>
-           <DialogClose asChild>
-              <Button type="button" variant="secondary">
-                Close
-              </Button>
+          <DialogClose asChild>
+            <Button type="button" variant="secondary" onClick={handleSendProposal} disabled={isSending}>
+              {isSending ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending...</> : 'Send Proposal'}
+            </Button>
             </DialogClose>
         </DialogContent>
       </Dialog>

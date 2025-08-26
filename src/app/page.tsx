@@ -26,12 +26,16 @@ export default function Home() {
                  <div className="space-y-2">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Let's Build Together</h2>
                     <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                      Have a project in mind? Fill out the form to get an AI-generated proposal, or send us a message for any other inquiries.
+                      Have a project in mind? Fill out the form to get an AI-generated proposal.
                     </p>
                   </div>
                   <ProjectProposalForm />
               </div>
               <div className="flex flex-col justify-center space-y-4">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">For any other inquiries</h2>
+                    <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                    Fill out the form to send us a message for any other inquiries.
+                    </p>
                  <Card>
                     <CardContent className="pt-6">
                       <ContactForm />

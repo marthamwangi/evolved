@@ -45,7 +45,7 @@ const prompt = ai.definePrompt({
   name: 'generateProjectProposalPrompt',
   input: {schema: GenerateProjectProposalInputSchema},
   output: {schema: GenerateProjectProposalOutputSchema},
-  prompt: `You are an AI assistant specializing in generating project proposals for a digital agency.
+  prompt: `You are an AI assistant specializing in generating project proposals for the "Evolved agency".
 
   Based on the following project details, create a comprehensive and persuasive project proposal.
 
