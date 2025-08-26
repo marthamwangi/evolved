@@ -220,7 +220,7 @@ export default function ProjectProposalForm() {
             </DialogDescription>
           </DialogHeader>
           <ScrollArea className="h-96 w-full rounded-md border p-4">
-            <div className="whitespace-pre-wrap text-sm" contentEditable={true}>{proposal}</div>
+            <textarea className="whitespace-pre-wrap text-sm" onChange={(e) => setProposal(e.target.value)} value={proposal || ''} />
           </ScrollArea>
           <DialogClose asChild>
             <Button type="button" variant="secondary" onClick={handleSendProposal} disabled={isSending}>

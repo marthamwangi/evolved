@@ -44,13 +44,20 @@ export async function sendProjectProposalAction(
     cc: process.env.GMAIL_USER, // Keep a copy for your records
     subject: `Your Custom Project Proposal from Evolved Agency`,
     html: `
-      <div style="font-family: sans-serif; line-height: 1.6; color: #333;">
+<div style="font-family: Inter, 'sans-serif'; line-height: 1.6; color: hsl(240 10% 3.9%); background-color: hsl(0 0% 96.1%); padding: 20px;">
+        
+        <div style="margin-bottom: 20px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: hsl(217.2 91.2% 59.8%);">
+            <path d="m8 3 4 8 5-5 5 15H2L8 3z"></path>
+          </svg>
+        </div>
+        
         <p>Hello ${userInput.userName},</p>
         <p>Thank you for taking the time to share your project details. We have reviewed your information and are pleased to provide a custom proposal tailored to your needs.</p>
         
-        <h2 style="color: #004d40;">Project Proposal</h2>
-        <div style="border-left: 4px solid #004d40; padding-left: 15px; background-color: #f9f9f9; padding: 20px;">
-          <pre style="white-space: pre-wrap; font-family: sans-serif;">${proposalHtml}</pre>
+        <h2 style="color: hsl(217.2 91.2% 59.8%); font-family: Inter, 'sans-serif';">Project Proposal</h2>
+        <div style="border-left: 4px solid hsl(217.2 91.2% 59.8%); padding-left: 15px; background-color: #f4f4f5; padding: 20px;">
+          <div style="font-size: 14px; line-height: 1.6;">${proposalHtml}</div>
         </div>
 
         <p>We are confident that our expertise can help you achieve your goals. Please feel free to schedule a call with us to discuss this proposal in more detail.</p>
